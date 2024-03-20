@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,8 +41,8 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText() {
         countText.text =  "Count: " + count.ToString();
-        if (count >= 9) {
-            winTextObject.SetActive(true);
+        if (count >= 1) {
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -58,6 +59,8 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+        } else if (other.gameObject.CompareTag("Enemy")) {
+            SceneManager.LoadScene(2);
         }
     }
 
