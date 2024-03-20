@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText() {
         countText.text =  "Count: " + count.ToString();
-        if (count >= 1) {
+        if (count >= 9) {
             SceneManager.LoadScene(3);
         }
     }
