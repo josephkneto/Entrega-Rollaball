@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 0; 
 
     public TextMeshProUGUI countText;
-    public GameObject winTextObject;
 
     private Rigidbody rb;
 
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
-        winTextObject.SetActive(false);
     }
 
     // This function is called when a move input is detected.
@@ -60,6 +58,8 @@ public class PlayerController : MonoBehaviour
             count = count + 1;
             SetCountText();
         } else if (other.gameObject.CompareTag("Enemy")) {
+            SceneManager.LoadScene(2);
+        } else if (other.gameObject.CompareTag("Fall")) {
             SceneManager.LoadScene(2);
         }
     }
